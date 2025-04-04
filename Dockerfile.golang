@@ -1,0 +1,9 @@
+FROM acgn0rg/tdlib:alpine AS tdlib
+FROM golang:alpine
+
+COPY --from=tdlib /tdlib /usr/local/
+
+RUN apk update &&\
+    apk upgrade --no-cache &&\
+    apk add --no-cache alpine-sdk linux-headers zlib-dev zlib-static libressl-dev && \
+    rm -rf /var/cache/apk/*
