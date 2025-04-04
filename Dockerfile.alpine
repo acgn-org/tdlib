@@ -7,7 +7,7 @@ RUN apk update && \
     apk add --no-cache alpine-sdk linux-headers git zlib-dev gperf php cmake libressl-dev zlib-static && \
     git clone https://github.com/tdlib/td.git && \
     cd td && \
-    git checkout 22d49d5 && \
+    git checkout b498497 && \
     mkdir build && cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/tdlib .. && \
     cmake --build . --target install -j20 && \
