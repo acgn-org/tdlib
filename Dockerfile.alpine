@@ -5,12 +5,11 @@ WORKDIR /
 RUN apk update && \
     apk upgrade --no-cache && \
     apk add --no-cache alpine-sdk linux-headers git zlib-dev gperf php cmake libressl-dev zlib-static && \
-    git clone https://github.com/tdlib/td.git && \
-    cd td && \
-    git checkout b498497 && \
+    mkdir td && cd td && git init && git remote add origin https://github.com/tdlib/td.git && \
+    git fetch --depth=1 origin b498497bbfd6b80c86f800b3546a0170206317d3 && git checkout b498497 && \
     mkdir build && cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/tdlib .. && \
-    cmake --build . --target install -j20 && \
+    cmake --build . --target install -j15 && \
     apk del gperf php cmake git && \
     rm -rf /td && \
     rm -rf /var/cache/apk/*
