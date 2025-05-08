@@ -6,7 +6,7 @@ RUN apk update && \
     apk upgrade --no-cache && \
     apk add --no-cache alpine-sdk linux-headers git zlib-dev gperf php cmake libressl-dev zlib-static && \
     mkdir td && cd td && git init && git remote add origin https://github.com/tdlib/td.git && \
-    git fetch --depth=1 origin b498497bbfd6b80c86f800b3546a0170206317d3 && git checkout b498497 && \
+    git fetch --depth=1 origin 971684a3dcc7bdf99eec024e1c4f57ae729d6d53 && git checkout 971684a && \
     mkdir build && cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/tdlib .. && \
     cmake --build . --target install -j15 && \
